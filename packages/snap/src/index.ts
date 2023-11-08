@@ -1,27 +1,33 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { panel, text } from '@metamask/snaps-ui';
-import * as wasmFile from './nucypher_core_wasm_bg.wasm';
+import nucypher_core_wasm_bg from './wasmNew/nucypher_core_wasm_bg.wasm';
+// import nucypher_core_wasm_bg from '@nucypher/nucypher-core/pkg-bundler/nucypher_core_wasm_bg.wasm';
+
+let imports: any = {};
+imports['__wbindgen_placeholder__'] = module.exports;
+// const wasmFile = require('@nucypher/nucypher-core/pkg-node/nucypher_core_wasm.js');
+// import * as wasmFile from './nucypher_core_wasm_bg.wasm';
 // import { MessageKit } from './pkg-bundler/nucypher_core_wasm';
 // const wasmFile = require('./pkg-bundler/nucypher_core_wasm_bg.js');
 // import { SecretKey, MessageKit } from './pkg-bundler/nucypher_core_wasm';
 // import { SecretKey, MessageKit } from '@nucypher/nucypher-core';
 
-const wasm: any = wasmFile;
+// const wasm: any = wasmFile;
 
-async function fetchAndInstantiate() {
-  try {
-    const response = await fetch(
-      'http://localhost:8089/nucypher_core_wasm_bg.wasm',
-    );
-    const buffer = await response.arrayBuffer();
+// async function fetchAndInstantiate() {
+//   try {
+//     const response = await fetch(
+//       'http://localhost:8089/nucypher_core_wasm_bg.wasm',
+//     );
+//     const buffer = await response.arrayBuffer();
 
-    const module = new WebAssembly.Module(buffer);
-    const instance = new WebAssembly.Instance(module);
-    // const instance = await WebAssembly.instantiate(buffer, {});
-  } catch (error) {
-    console.log('[error]', error);
-  }
-}
+//     const module = new WebAssembly.Module(buffer);
+//     const instance = new WebAssembly.Instance(module);
+//     // const instance = await WebAssembly.instantiate(buffer, {});
+//   } catch (error) {
+//     console.log('[error]', error);
+//   }
+// }
 
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
@@ -33,7 +39,10 @@ async function fetchAndInstantiate() {
  * @returns The result of `snap_dialog`.
  * @throws If the request method is not valid for this snap.
  */
-export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
+export const onRpcRequest: OnRpcRequestHandler = async ({
+  origin,
+  request,
+}) => {
   switch (request.method) {
     case 'hello':
       return snap.request({
@@ -50,7 +59,31 @@ export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
         },
       });
     case 'multi_test_run':
-      fetchAndInstantiate();
+      console.log('log 1');
+      // const response = await fetch(
+      //   'http://localhost:8089/nucypher_core_wasm_bg.wasm',
+      // );
+      // const buffer = await response.arrayBuffer();
+      console.log(nucypher_core_wasm_bg, '----');
+
+      const wasmModule = new WebAssembly.Module(nucypher_core_wasm_bg);
+      const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
+
+      console.log(wasmInstance.exports, '****************');
+
+      // wasm = wasmInstance.exports;
+      // const entropy = await snap.request({
+      //   method: 'snap_getEntropy',
+      //   params: {
+      //     version: 1,
+      //     salt: '0x5359e1dcd4db3002d28f9ca90b3022672f4423f0',
+      //   },
+      // });
+
+      // const module = new WebAssembly.Module(bytes);
+      // const instance = new WebAssembly.Instance(module, {});
+
+      // fetchAndInstantiate();
       // let importObject = {
       //   imports: {
       //     imported_func: (arg: any) => console.log(arg),
