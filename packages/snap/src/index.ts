@@ -1,33 +1,72 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { panel, text } from '@metamask/snaps-ui';
-import nucypher_core_wasm_bg from './wasmNew/nucypher_core_wasm_bg.wasm';
-// import nucypher_core_wasm_bg from '@nucypher/nucypher-core/pkg-bundler/nucypher_core_wasm_bg.wasm';
-
 let imports: any = {};
 imports['__wbindgen_placeholder__'] = module.exports;
-// const wasmFile = require('@nucypher/nucypher-core/pkg-node/nucypher_core_wasm.js');
-// import * as wasmFile from './nucypher_core_wasm_bg.wasm';
-// import { MessageKit } from './pkg-bundler/nucypher_core_wasm';
-// const wasmFile = require('./pkg-bundler/nucypher_core_wasm_bg.js');
-// import { SecretKey, MessageKit } from './pkg-bundler/nucypher_core_wasm';
-// import { SecretKey, MessageKit } from '@nucypher/nucypher-core';
 
-// const wasm: any = wasmFile;
+module.exports.__wbindgen_object_drop_ref = function () {};
 
-// async function fetchAndInstantiate() {
-//   try {
-//     const response = await fetch(
-//       'http://localhost:8089/nucypher_core_wasm_bg.wasm',
-//     );
-//     const buffer = await response.arrayBuffer();
+module.exports.__wbg_verifiedkeyfrag_new = function () {};
 
-//     const module = new WebAssembly.Module(buffer);
-//     const instance = new WebAssembly.Instance(module);
-//     // const instance = await WebAssembly.instantiate(buffer, {});
-//   } catch (error) {
-//     console.log('[error]', error);
-//   }
-// }
+module.exports.__wbg_getRandomValues_37fa2ca9e4e07fab = function () {};
+
+module.exports.__wbg_randomFillSync_dc1e9a60c158336d = function () {};
+
+module.exports.__wbg_crypto_c48a774b022d20ac = function () {};
+
+module.exports.__wbindgen_is_object = function () {};
+
+module.exports.__wbg_process_298734cf255a885d = function () {};
+
+module.exports.__wbg_versions_e2e78e134e3e5d01 = function () {};
+
+module.exports.__wbg_node_1cd7a5d853dbea79 = function () {};
+
+module.exports.__wbindgen_is_string = function () {};
+
+module.exports.__wbg_msCrypto_bcb970640f50a1e8 = function () {};
+
+module.exports.__wbg_require_8f08ceecec0f4fee = function () {};
+
+module.exports.__wbindgen_is_function = function () {};
+
+module.exports.__wbindgen_string_new = function () {};
+
+module.exports.__wbg_newnoargs_ccdcae30fd002262 = function () {};
+
+module.exports.__wbg_call_669127b9d730c650 = function () {};
+
+module.exports.__wbindgen_object_clone_ref = function () {};
+
+module.exports.__wbg_self_3fad056edded10bd = function () {};
+
+module.exports.__wbg_window_a4f46c98a61d4089 = function () {};
+
+module.exports.__wbg_globalThis_17eff828815f7d84 = function () {};
+
+module.exports.__wbg_global_46f939f6541643c5 = function () {};
+
+module.exports.__wbindgen_is_undefined = function () {};
+
+module.exports.__wbg_new_ab87fd305ed9004b = function () {};
+
+module.exports.__wbg_call_53fc3abd42e24ec8 = function () {};
+
+module.exports.__wbg_buffer_344d9b41efe96da7 = function () {};
+
+module.exports.__wbg_newwithbyteoffsetandlength_2dc04d99088b15e3 =
+  function () {};
+
+module.exports.__wbg_new_d8a000788389a31e = function () {};
+
+module.exports.__wbg_set_dcfd613a3420f908 = function () {};
+
+module.exports.__wbg_newwithlength_13b5319ab422dcf6 = function () {};
+
+module.exports.__wbg_subarray_6ca5cfa7fbb9abbe = function () {};
+
+module.exports.__wbindgen_throw = function () {};
+
+module.exports.__wbindgen_memory = function () {};
 
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
@@ -60,70 +99,15 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
       });
     case 'multi_test_run':
       console.log('log 1');
-      // const response = await fetch(
-      //   'http://localhost:8089/nucypher_core_wasm_bg.wasm',
-      // );
-      // const buffer = await response.arrayBuffer();
-      console.log(nucypher_core_wasm_bg, '----');
-
-      const wasmModule = new WebAssembly.Module(nucypher_core_wasm_bg);
+      const response = await fetch(
+        'http://localhost:8089/nucypher_core_wasm_bg.wasm',
+      );
+      const buffer = await response.arrayBuffer();
+      const wasmModule = new WebAssembly.Module(buffer);
       const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
+      const wasm: any = wasmInstance.exports;
+      console.log(wasm, '****************', wasm.secretkey_random());
 
-      console.log(wasmInstance.exports, '****************');
-
-      // wasm = wasmInstance.exports;
-      // const entropy = await snap.request({
-      //   method: 'snap_getEntropy',
-      //   params: {
-      //     version: 1,
-      //     salt: '0x5359e1dcd4db3002d28f9ca90b3022672f4423f0',
-      //   },
-      // });
-
-      // const module = new WebAssembly.Module(bytes);
-      // const instance = new WebAssembly.Instance(module, {});
-
-      // fetchAndInstantiate();
-      // let importObject = {
-      //   imports: {
-      //     imported_func: (arg: any) => console.log(arg),
-      //   },
-      // };
-
-      // WebAssembly.instantiate(
-      //   fetch(wasm),
-      //   // fetch('http://localhost:8089/nucypher_core_wasm_bg.wasm'),
-      //   {},
-      // )
-      //   .then((obj) => {
-      //     console.log(obj, '----');
-      //     // obj.instance.exports.exported_func()
-      //   })
-      //   .catch((error) => {
-      //     console.log(error, '报错');
-      //   });
-
-      // fetch('http://localhost:8089/simple.wasm')
-      // fetch('http://localhost:8089/nucypher_core_wasm_bg.wasm')
-      //   .then(async (res) => {
-      //     console.log(await res.json());
-      //   })
-      //   // .then((res) => res.arrayBuffer())
-      //   // .then((bytes) => WebAssembly.instantiateStreaming(bytes, {}))
-      //   // .then((bytes) => WebAssembly.instantiate(bytes, {}))
-      //   .then((results: any) => {
-      //     console.log(results.instance, '结果 ~ ');
-      //     // results.instance.exports.exported_func();
-      //   })
-      //   .catch((error) => {
-      //     console.log(error, '报错');
-      //   });
-
-      // fetch('https://dev-api-nft.interworld.io/api/v1/ping')
-      //   .then((x) => x.json())
-      //   .then((n) => {
-      //     console.log(n, '结果');
-      //   });
       return snap.request({
         method: 'snap_dialog',
         params: {
