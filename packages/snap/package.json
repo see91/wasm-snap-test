@@ -28,6 +28,7 @@
   "dependencies": {
     "@metamask/snaps-types": "^2.0.0",
     "@metamask/snaps-ui": "^2.0.0",
+    "@polkadot/x-textdecoder": "^12.5.1",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
