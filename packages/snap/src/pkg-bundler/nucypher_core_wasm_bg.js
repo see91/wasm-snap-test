@@ -1,8 +1,6 @@
 import * as wasm from './nucypher_core_wasm_bg.wasm';
 const heap = new Array(32).fill(undefined);
 
-console.log(wasm.memory,'发的健康nnnn男男女女');
-
 heap.push(undefined, null, true, false);
 
 function getObject(idx) { return heap[idx]; }
