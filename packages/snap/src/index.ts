@@ -1,6 +1,7 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { panel, text } from '@metamask/snaps-ui';
-import { getWasm } from './wasmTest.js';
+import { SecretKey } from './nulink-nucypher-snap';
+
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
  *
@@ -31,13 +32,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         },
       });
     case 'multi_test_run':
-      const wasm = await getWasm();
-
-      console.log(wasm);
-      console.log(wasm.secretkey_random());
-
-      console.log(wasm.secretkeyfactory_random());
-      console.log(wasm.secretkeyfactory_seedSize());
+      console.log('[SecretKey.random]', SecretKey.random());
       return snap.request({
         method: 'snap_dialog',
         params: {

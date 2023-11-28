@@ -4639,6 +4639,7 @@ __metadata:
     eslint-plugin-jsdoc: ^39.2.9
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^4.2.1
+    nulink-nucypher-snap: 1.0.4
     prettier: ^2.2.1
     prettier-plugin-packagejson: ^2.2.18
     typescript: ^4.7.4
@@ -5559,6 +5560,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@polkadot/x-global@npm:12.6.1":
+  version: 12.6.1
+  resolution: "@polkadot/x-global@npm:12.6.1"
+  dependencies:
+    tslib: ^2.6.2
+  checksum: a61675e39ad243de6932e11dd4490c80197009091bcced2f69103ca277b912b233f6898d6bb9a3008ebad82720ff1f5f66214fda5296c86b1b6b9f90ea1e3b43
+  languageName: node
+  linkType: hard
+
 "@polkadot/x-textdecoder@npm:^12.5.1":
   version: 12.5.1
   resolution: "@polkadot/x-textdecoder@npm:12.5.1"
@@ -5566,6 +5576,16 @@ __metadata:
     "@polkadot/x-global": 12.5.1
     tslib: ^2.6.2
   checksum: 202a9e216e9b89cc74012fa3f6c96eeb368dc3e6fa3c943f28c37c20941a6c678506cbc136946e9ff100123aa43846eab7765af074de94dfdd23f4ce2242c794
+  languageName: node
+  linkType: hard
+
+"@polkadot/x-textdecoder@npm:^12.6.1":
+  version: 12.6.1
+  resolution: "@polkadot/x-textdecoder@npm:12.6.1"
+  dependencies:
+    "@polkadot/x-global": 12.6.1
+    tslib: ^2.6.2
+  checksum: f5420c6539c598ede18a984dc0e2e11a0d80fe7be5813cfe9fdd162bfbd3a852131b27385d13587aefac976dd82fc06f2c6707acc8049a40ec13b8fb0b891055
   languageName: node
   linkType: hard
 
@@ -17859,6 +17879,15 @@ __metadata:
   dependencies:
     boolbase: ^1.0.0
   checksum: 5afc3dafcd1573b08877ca8e6148c52abd565f1d06b1eb08caf982e3fa289a82f2cae697ffb55b5021e146d60443f1590a5d6b944844e944714a5b549675bcd3
+  languageName: node
+  linkType: hard
+
+"nulink-nucypher-snap@npm:1.0.4":
+  version: 1.0.4
+  resolution: "nulink-nucypher-snap@npm:1.0.4"
+  dependencies:
+    "@polkadot/x-textdecoder": ^12.6.1
+  checksum: b9907bbd7734378b4def2b9b818d5a28c1fbc6570cad2fdea1ecc7eadf9621e687d4c8ff70c1d5ba89a1e3ddf25fa9efd327661d3b30926e92304958051611a5
   languageName: node
   linkType: hard
 
