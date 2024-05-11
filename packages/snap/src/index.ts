@@ -1,7 +1,8 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { panel, text } from '@metamask/snaps-ui';
 import { SecretKey } from './nulink-nucypher-snap';
-
+import { hdkey } from 'ethereumjs-wallet/dist.browser'
+import * as bip39 from "bip39"; //"bip39": "^3.0.4",
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
  *
@@ -18,6 +19,20 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
 }) => {
   switch (request.method) {
     case 'hello':
+      const mnemonic = bip39.generateMnemonic();
+      console.log(mnemonic, '助记词');
+      const seed = await bip39.mnemonicToSeed(mnemonic);
+      // console.log(seed, '助记词的 seed');
+      try {
+        console.log(hdkey, '打扫房间肯定是');
+        // const __hdkey = new hdkey()
+        console.log(hdkey.fromMasterSeed(seed), '发的设计费活动结束');
+
+        hdkey.fromMasterSeed(seed);
+      } catch (error) {
+        console.log(error, '地方技术开发进度款圣诞节开发');
+      }
+
       return snap.request({
         method: 'snap_dialog',
         params: {

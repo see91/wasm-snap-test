@@ -12,7 +12,7 @@ const config: SnapConfig = {
   },
   experimental: {
     wasm: true,
-  },
+  }
 };
 
 export default config;

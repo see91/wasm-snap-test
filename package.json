@@ -24,7 +24,15 @@
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!**/CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
     "start": "yarn workspaces foreach --parallel --interlaced --verbose run start",
-    "test": "echo \"TODO\""
+    "test": "echo \"TODO\"",
+    "cz": "czg",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "useEmoji": true
+    }
   },
   "devDependencies": {
     "@metamask/eslint-config": "^10.0.0",
@@ -50,6 +58,10 @@
   },
   "dependencies": {
     "@nucypher/nucypher-core": "0.2.0",
+    "bip39": "^3.1.0",
+    "cz-git": "^1.9.1",
+    "czg": "^1.9.1",
+    "ethereumjs-wallet": "^1.0.2",
     "wasm-loader": "^1.3.0"
   }
 }
